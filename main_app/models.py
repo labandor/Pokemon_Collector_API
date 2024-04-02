@@ -26,15 +26,15 @@ POKEMON_TYPES = [
 ]
 
 POKEMON_FOOD = [
-        ('Ber', 'Berries'),
-        ('PokeB','Pokeblock'),
-        ('Pof', 'Poffin'),
-        ('Hon', 'Honey'),
-        ('Apri', 'Aprijuice'),
-        ('PokeP', 'Poke Puffs'),
-        ('PokeBe', 'Poke Beans'),
-        ('Cur', 'Curry'),
-        ('Sand', 'Sandwiches'),
+        ('Berries', 'Berries'),
+        ('PokeBlock','Pokeblock'),
+        ('Poffin', 'Poffin'),
+        ('Honey', 'Honey'),
+        ('Aprijuice', 'Aprijuice'),
+        ('PokePuffs', 'Poke Puffs'),
+        ('PokeBeans', 'Poke Beans'),
+        ('Curry', 'Curry'),
+        ('Sandwich', 'Sandwiches'),
         ('Local', 'Local Specialty'),
 ]
 
