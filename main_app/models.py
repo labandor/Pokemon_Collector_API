@@ -43,7 +43,7 @@ class Toy(models.Model):
     color = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.name
+        return f'{self.color} {self.name}'
 
 class User(models.Model):
     username = models.CharField(max_length=15)
@@ -79,6 +79,6 @@ class Feeding(models.Model):
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name='feeding')
 
     def __str__(self):
-        return self.meal
+        return f'{self.meal} --- {self.pokemon.name}'
 
 
