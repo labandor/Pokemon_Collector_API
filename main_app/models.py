@@ -22,7 +22,7 @@ POKEMON_TYPES = [
         ('Steel', 'Steel'),
         ('Fairy', 'Fairy'),
         ('Stellar', 'Stellar'),
-        ('Null', 'Null'),
+        ('N/A', 'N/A'),
 ]
 
 POKEMON_FOOD = [
@@ -54,6 +54,7 @@ class User(models.Model):
 
 class Pokemon(models.Model):
     name = models.CharField(max_length=13)
+    species = models.CharField(max_length=13, default='N/A')
     type1 = models.CharField(choices=POKEMON_TYPES)
     type2 = models.CharField(choices=POKEMON_TYPES)
     sex = models.CharField(max_length=6, choices = [('Boy', 'Male'), ('Girl', 'Female')])
