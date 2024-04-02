@@ -57,14 +57,14 @@ class Pokemon(models.Model):
     species = models.CharField(max_length=13)
     type1 = models.CharField(choices=POKEMON_TYPES)
     type2 = models.CharField(choices=POKEMON_TYPES)
-    sex = models.CharField(max_length=6, choices = [('Boy', 'Male'), ('Girl', 'Female')])
+    sex = models.CharField(max_length=6, choices = [('Male', 'Male'), ('Female', 'Female')])
     size_cm = models.IntegerField()
     weight_lbs = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pokemon')
     toys = models.ManyToManyField(Toy)
 
     def __str__(self):
-        return f'{self.name} - {self.species} - {self.type1} {self.type2}'
+        return f'{self.name} - {self.species} - {self.type1}, {self.type2}'
 
 class Photo(models.Model):
     url = models.CharField()
