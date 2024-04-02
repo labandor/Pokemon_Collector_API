@@ -54,7 +54,7 @@ class User(models.Model):
 
 class Pokemon(models.Model):
     name = models.CharField(max_length=13)
-    species = models.CharField(max_length=13, default='N/A')
+    species = models.CharField(max_length=13)
     type1 = models.CharField(choices=POKEMON_TYPES)
     type2 = models.CharField(choices=POKEMON_TYPES)
     sex = models.CharField(max_length=6, choices = [('Boy', 'Male'), ('Girl', 'Female')])
