@@ -64,7 +64,7 @@ class Pokemon(models.Model):
     toys = models.ManyToManyField(Toy)
 
     def __str__(self):
-        return f'{self.name} - {self.type1} {self.type2}'
+        return f'{self.name} - {self.species} - {self.type1} {self.type2}'
 
 class Photo(models.Model):
     url = models.CharField()
