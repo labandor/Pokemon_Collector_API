@@ -50,12 +50,12 @@ class ToyDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ToySerializer
     lookup_field = 'id'
 
-class ToyListCreate(generics.ListCreateAPIView):
-    serializer_class = ToySerializer
+#class ToyListCreate(generics.ListCreateAPIView):
+#    serializer_class = ToySerializer
 
-    def get_queryset(self):
-        pokemon_id = self.kwargs['pokemon_id']
-        return Toy.objects.filter(pokemon_id = pokemon_id)
+#    def get_queryset(self):
+#        pokemon_id = self.kwargs['pokemon_id']
+#        return Toy.objects.filter(pokemon_id = pokemon_id)
 
 #    def perform_create(self, serializer):
 #        pokemon_id = self.kwargs['pokemon_id']
