@@ -81,4 +81,7 @@ class Feeding(models.Model):
     def __str__(self):
         return f'{self.meal} --- {self.pokemon.name}'
 
+    class Meta:
+        ordering = ['-date']
+
 

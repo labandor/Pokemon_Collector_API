@@ -28,6 +28,7 @@ class FeedingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feeding
         fields = '__all__'
+        read_only_fields = ('pokemon',)
 
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
