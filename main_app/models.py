@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -48,6 +49,9 @@ class Toy(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=15)
     password = models.CharField()
+    email = models.CharField()
+    first_name = models.CharField()
+    last_name = models.CharField()
 
     def __str__(self):
         return self.username
@@ -60,7 +64,7 @@ class Pokemon(models.Model):
     sex = models.CharField(max_length=6, choices = [('Male', 'Male'), ('Female', 'Female')])
     size_cm = models.IntegerField()
     weight_lbs = models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pokemon')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     toys = models.ManyToManyField(Toy)
 
     def __str__(self):
