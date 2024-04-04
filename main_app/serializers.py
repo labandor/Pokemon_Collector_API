@@ -2,7 +2,13 @@ from rest_framework import serializers
 from .models import Pokemon, User, Toy, Feeding, Photo
 from rest_framework.validators import UniqueTogetherValidator
 
+class ToySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Toy
+        fields = '__all__'
+
 class PokemonSerializer(serializers.ModelSerializer):
+    toys = ToySerializer(many=True, read_only=True)
     class Meta:
         model = Pokemon
         fields = '__all__'
@@ -19,10 +25,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
-class ToySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Toy
-        fields = '__all__'
 
 class FeedingSerializer(serializers.ModelSerializer):
     class Meta:

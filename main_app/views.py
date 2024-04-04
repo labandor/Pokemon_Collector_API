@@ -21,6 +21,18 @@ class PokemonDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PokemonSerializer
     lookup_field = 'id'
 
+    def retrieve(self, request, *args, **kwards):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+
+        toys_not_associated = Toy.objects.exclude(id__in=instance.toys.all())
+        toys_serializer = ToySerializer(toys_not_associated, many=True)
+
+        return Response({
+            'pokemon': serializer.data,
+            'toys_not_associated': toys_serializer.data
+            })
+
 class FeedingListCreate(generics.ListCreateAPIView):
   serializer_class = FeedingSerializer
 
@@ -53,7 +65,7 @@ class ToyDetail(generics.RetrieveUpdateDestroyAPIView):
 #class ToyListCreate(generics.ListCreateAPIView):
 #    serializer_class = ToySerializer
 
-#    def get_queryset(self):
+#    def get_queryset(self)
 #        pokemon_id = self.kwargs['pokemon_id']
 #        return Toy.objects.filter(pokemon_id = pokemon_id)
 
@@ -62,4 +74,17 @@ class ToyDetail(generics.RetrieveUpdateDestroyAPIView):
 #        pokemon = Pokemon.objects.get(id=pokemon_id)
 #        serializer.save(pokemon=pokemon)
 
+class AddToyToPokemon(APIView):
+    def post(self, request, pokemon_id, toy_id):
+        pokemon = Pokemon.objects.get(id=pokemon_id)
+        toy = Toy.objects.get(id=toy_id)
+        pokemon.toys.add(toy)
+        return Response({'message': f'Toy {toy.name} added to Pokemon {pokemon.name}'})
+
+class RemoveToyToPokemon(APIView):
+    def post(self, request, pokemon_id, toy_id):
+        pokemon = Pokemon.objects.get(id=pokemon_id)
+        toy = Toy.objects.get(id=toy_id)
+        pokemon.toys.remove(toy)
+        return Response({'message': f'Toy {toy.name} removed from Pokemon {pokemon.name}'})
 
